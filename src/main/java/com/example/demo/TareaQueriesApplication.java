@@ -83,5 +83,10 @@ public class TareaQueriesApplication implements CommandLineRunner{
 		Pelicula pAux = this.peliculaService.buscarPeliculaDinamica("Transformers", new BigDecimal(200), "Michael Bay");
 		System.out.println(pAux);
 		
+		Integer intAux = this.peliculaService.actualizarPorTitulo("Avatar", new BigDecimal(2684));
+		System.out.println(intAux);
+		
+		Integer intAux2 = this.peliculaService.borrarPorDirector("Quentin Tarantino");
+		System.out.println(intAux2);
 	}
 }

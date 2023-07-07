@@ -8,6 +8,7 @@ import com.example.demo.repository.modelo.Pelicula;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
@@ -50,5 +51,20 @@ public class PeliculaRepoImpl implements IPeliculaRepo{
 		criteriaQuery.select(myTablaFrom).where(predicadoFinal);
 		TypedQuery<Pelicula> queryFinal = this.entityManager.createQuery(criteriaQuery);
 		return queryFinal.getSingleResult();
+	}
+
+	@Override
+	public int eliminarPorDirector(String director) {
+		Query query = this.entityManager.createQuery("DELETE FROM Pelicula p WHERE p.director = :datoDirector");
+		query.setParameter("datoDirector", director);
+		return query.executeUpdate();
+	}
+
+	@Override
+	public int actualizarPorTitulo(String titulo, BigDecimal recaudacion) {
+		Query query = this.entityManager.createQuery("UPDATE Pelicula p SET p.recaudacion = :datoRecaudacion WHERE p.titulo = :datoTitulo");
+		query.setParameter("datoRecaudacion", recaudacion);
+		query.setParameter("datoTitulo", titulo);
+		return query.executeUpdate();
 	}
 }

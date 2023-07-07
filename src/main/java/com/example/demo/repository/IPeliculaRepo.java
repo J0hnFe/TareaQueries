@@ -9,5 +9,7 @@ public interface IPeliculaRepo {
 	public void insertar(Pelicula p);
 	public Pelicula seleccionarPeliculaDinamica(String titulo, BigDecimal presupuesto, String director);
 	
+	public int eliminarPorDirector(String director);
+	public int actualizarPorTitulo(String titulo, BigDecimal recaudacion);
 	
 }

@@ -24,4 +24,14 @@ public class PeliculaServiceImpl implements IPeliculaService{
 		return this.peliculaRepo.seleccionarPeliculaDinamica(titulo, presupuesto, director);
 	}
 
+	@Override
+	public int borrarPorDirector(String director) {
+		return this.peliculaRepo.eliminarPorDirector(director);
+	}
+
+	@Override
+	public int actualizarPorTitulo(String titulo, BigDecimal recaudacion) {
+		return this.peliculaRepo.actualizarPorTitulo(titulo, recaudacion);
+	}
+
 }
